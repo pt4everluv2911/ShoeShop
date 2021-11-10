@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Thiên Phúc Cart</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" th:href="@{/img/apple-icon.png}">
+    <link rel="shortcut icon" type="static/image/x-icon" th:href="@{/img/favicon.ico}" >
+
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" type="text/css"  >
+    <link rel="stylesheet" th:href="@{/css/templatemo.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/custom.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/cart.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/js/cart.js}" type="text/css">
+
+    <!-- Load fonts style after rendering the layout styles -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+    <link rel="stylesheet" th:href="@{/css/fontawesome.min.css}">
+</head>
+<body>
+<!-- Start Top Nav -->
+<div th:replace="fragments/topNav:: topNav"/>
+<!-- Header -->
+<div th:replace="fragments/header:: header"/>
+<!--&lt;!&ndash; Modal &ndash;&gt;-->
+<div th:replace="fragments/modal:: modal"/>
+
+<div class="main">
+    <h1>Shopping cart</h1>
+    <h2 class="sub-heading">Free shipping from $100!</h2>
+
+    <section class="shopping-cart">
+        <ol class="ui-list shopping-cart--list" id="shopping-cart--list">
+<!-- Summarize the product detail( img, h2, description, price, quantity ...)            -->
+            <div id="shopping-cart--list-item-template" >
+                <li class="_grid shopping-cart--list-item">
+                    <div class="_column product-image">
+                        <img class="card-img img-fluid" th:src="@{${cartDto.mainImg}}" alt="Card image cap" id="product-detail">
+                    </div>
+                    <div class="_column product-info">
+                        <h4 class="product-name" ><span th:text="${cartDto.h2}"/> </h4>
+                        <p class="product-desc" th:utext="${cartDto.description}"></p>
+                        <div class="price product-single-price" th:text="  ${cartDto.price} + '$'" ></div>
+                    </div>
+                    <div class="_column product-modifiers" >
+                        <div class="_grid">
+                            <button class="_btn _column product-subtract">&minus;</button>
+                            <div class="_column product-qty">1</div>
+                            <button class="_btn _column product-plus">&plus;</button>
+                        </div>
+                        <button class="_btn entypo-trash product-remove">Remove</button>
+
+                        <div class="price product-total-price" th:utext="  ${cartDto.price} + '$'"/>
+                    </div>
+                </li>
+            </div>
+
+        </ol>
+<!--calculate the total cost-->
+        <footer class="_grid cart-totals">
+            <div class="_column subtotal" id="subtotalCtr">
+                <div class="cart-totals-key">Tổng số tiền sản phẩm</div>
+                <div class="cart-totals-value">$0.00</div>
+            </div>
+            <div class="_column shipping" id="shippingCtr">
+                <div class="cart-totals-key">Phí Vận chuyển</div>
+                <div class="cart-totals-value">$0.00</div>
+            </div>
+            <div class="_column total" id="totalCtr">
+                <div class="cart-totals-key">Tổng thanh toán</div>
+                <div class="cart-totals-value">$0.00</div>
+            </div>
+            <div class="_column checkout">
+                <button class="_btn checkout-btn entypo-forward">Thanh Toán</button>
+            </div>
+        </footer>
+
+    </section>
+</div>
+
+
+
+<!-- Start Footer -->
+<div th:replace="fragments/footer:: footer"/>
+</body>
+</html>

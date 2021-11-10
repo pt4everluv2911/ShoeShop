@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Slide Adjust</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" th:href="@{/img/apple-icon.png}">
+    <link rel="shortcut icon" type="static/image/x-icon" th:href="@{/img/favicon.ico}">
+
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/templatemo.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/custom.css}" type="text/css">
+
+    <!-- Load fonts style after rendering the layout styles -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+    <link rel="stylesheet" th:href="@{/css/fontawesome.min.css}">
+
+</head>
+<body>
+<!-- Start Top Nav -->
+<div th:replace="fragments/topNav:: topNav"/>
+
+<!-- Header -->
+<div th:replace="fragments/header:: header"/>
+
+<!--&lt;!&ndash; Modal &ndash;&gt;-->
+<div th:replace="fragments/modal:: modal"/>
+
+
+<div class="col-md-6 offset-md-3 mt-5">
+    <br>
+    <h1>Adjust Home Slide </h1>
+    <form accept-charset="UTF-8" action="http://localhost:8080/adjust-home-slide" method="POST"
+          enctype="multipart/form-data">
+        <span class="alert-success" th:utext="${message}"></span>
+        <div class="form-group">
+            <label for="EnterH1">H1</label>
+            <input type="text" name="inputH1" class="form-control" id="EnterH1" placeholder="Enter the H1 text"
+                   required="required">
+        </div>
+        <div class="form-group">
+            <label for="EnterH2" required="required">H2</label>
+            <input type="text" name="inputH2" class="form-control" id="EnterH2" aria-describedby="Enter the H2 text"
+                   placeholder="Enter the H2 text">
+        </div>
+        <div class="form-group">
+            <label for="EnterP" required="required">P</label>
+            <input type="text" name="inputParagrath" class="form-control" id="EnterP" aria-describedby="emailHelp"
+                   placeholder="Enter the Paragrath text">
+        </div>
+
+        <div class="form-group">
+            <label for="pageSelection"> Choose the page to dislay </label>
+            <select class="form-control" id="pageSelection" name="pageSelection" required="required">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="brand"> Choose brand </label>
+            <select class="form-control" id="brand" name="brand" required="required">
+                <option value="Addidas">Addidas</option>
+                <option value="Nike">Nike</option>
+                <option value="ReeBook">ReeBook</option>
+                <option value="">Other</option>
+
+            </select>
+        </div>
+
+
+        <div class="form-group mt-3">
+            <label class="mr-2">Upload The image:</label>
+            <input type="file" name="file">
+        </div>
+        <hr>
+        <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+    </form>
+</div>
+</body>
+</html>
